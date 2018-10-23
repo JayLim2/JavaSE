@@ -1,0 +1,24 @@
+Chapter 2
+Task 14
+
+При исследовании классов с помощью javap было получено:
+
+Compiled from "Network.java"
+public class com.jaylim.ch02.task14.Network$Member {
+  private java.lang.String name;
+  private java.util.ArrayList<com.jaylim.ch02.task14.Network$Member> friends;
+  final com.jaylim.ch02.task14.Network this$0;
+  public com.jaylim.ch02.task14.Network$Member(com.jaylim.ch02.task14.Network, java.lang.String);
+  public void leave();
+  public boolean belongsTo(com.jaylim.ch02.task14.Network);
+}
+
+Compiled from "Network.java"
+public class com.jaylim.ch02.task14.Network {
+  private java.util.ArrayList<com.jaylim.ch02.task14.Network$Member> members;
+  public com.jaylim.ch02.task14.Network();
+  public com.jaylim.ch02.task14.Network$Member enroll(java.lang.String);
+  public void unenroll(com.jaylim.ch02.task14.Network$Member);
+}
+
+т.е. данная комманда получает список всех членов соответствующего класса

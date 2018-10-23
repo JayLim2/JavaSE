@@ -8,21 +8,3 @@ public class Main {
 
     }
 }
-
-class DigitSequence implements Iterator<Integer> {
-    Integer i = 0;
-
-    @Override
-    public boolean hasNext() {
-        return true;
-    }
-
-    @Override
-    public Integer next() {
-        return i++;
-    }
-
-    @Override
-    public void remove() {
-    }
-}

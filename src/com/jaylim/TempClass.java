@@ -7,6 +7,8 @@ import java.util.stream.Stream;
 
 public class TempClass {
     public static void main(String[] args) throws IntrospectionException {
+        //no exercise
+
         /*Class<?> cl = TestBean.class;
         BeanInfo info = Introspector.getBeanInfo(cl);
         PropertyDescriptor[] props = info.getPropertyDescriptors();

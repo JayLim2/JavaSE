@@ -1,0 +1,18 @@
+Задание выполняется в консоли.
+
+Если в классе указан пакет ch01.sec01, но файл
+не находится в соответствующей папке, то:
+1) javac HelloWorld.java
+Компилирует в пакете по умолчанию
+2) javac -d . HelloWorld.java
+Генерирует необходимые пакеты и компилирует туда
+3) При запуске класса, в котором обозначен пакет, но
+сам класс не в этом пакете - предупреждение:
+
+Warning: Binary file HW contains chapter01.sec01.HW
+Compiled from "HW.java"
+public class chapter01.sec01.HW {
+  public chapter01.sec01.HW();
+  public static void main(java.lang.String[]);
+}
+

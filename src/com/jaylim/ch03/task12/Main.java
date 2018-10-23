@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
 
+// FIXME: 10/23/2018 UNRESOLVED
 public class Main {
     public static void main(String[] args) {
         File[] files = getFilesListByFilenames("D:\\",
