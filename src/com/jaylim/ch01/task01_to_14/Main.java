@@ -16,10 +16,13 @@ public class Main {
         //task8();
         //task09();
         //task10();
-        System.out.println(task14());
+        /*System.out.println(task14());
 
         new Scanner(System.in).nextInt();
-        new Random().nextInt();
+        new Random().nextInt();*/
+        int a = -(65535 / 2);
+        a &= 0xFF;
+        System.out.println(a);
     }
 
     /**
@@ -123,6 +126,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         short num1 = scanner.nextShort();
+        num1 <<= 0xFF;
+
+        //exception
+
         int a = Short.toUnsignedInt(num1);
         System.out.println(num1);
     }
@@ -191,6 +198,9 @@ public class Main {
 
     // FIXME: 10/23/2018 unresolved
     public static void task11() {
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.nextLine();
+
 
     }
 
