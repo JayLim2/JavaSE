@@ -3,12 +3,23 @@ package com.jaylim.ch03.task01_02;
 public class Employee implements Measurable {
     private static int lastId = 0;
     private int id;
+    private String name;
     private double salary;
 
-    public Employee(double salary) {
+    public Employee(String name, double salary) {
         lastId++;
         id = lastId;
+        this.name = name;
         this.salary = salary;
+    }
+
+    //getName added for resolving ch03.task14
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -38,5 +49,21 @@ public class Employee implements Measurable {
             }
         }
         return largest;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Employee:\n");
+        stringBuilder.append("\tid: ");
+        stringBuilder.append(id);
+        stringBuilder.append("\n");
+        stringBuilder.append("\tname: ");
+        stringBuilder.append(name);
+        stringBuilder.append("\n");
+        stringBuilder.append("\tsalary: ");
+        stringBuilder.append(salary);
+        stringBuilder.append("\n\n");
+        return stringBuilder.toString();
     }
 }
