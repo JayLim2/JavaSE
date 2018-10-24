@@ -1,9 +1,6 @@
 package com.jaylim.ch06.task07_08;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-public class Pair<E> {
+public class Pair<E extends Comparable<E>> {
     private E first;
     private E second;
 
@@ -21,17 +18,10 @@ public class Pair<E> {
     }
 
     public E max() {
-        Class<?> cl = first.getClass();
-        if (second.getClass() != cl) {
-            return null;
-        }
+        return first != null && first.compareTo(second) > 0 ? first : second;
+    }
 
-        try {
-            Method method = cl.getDeclaredMethod("compareTo", cl);
-            Object result = method.invoke(first, second);
-            return (Integer) result > 0 ? first : second;
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
-            return null;
-        }
+    public E min() {
+        return first != null && first.compareTo(second) < 0 ? first : second;
     }
 }
