@@ -7,6 +7,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         scanner.next();
 
-        // FIXME: 10/23/2018 UNRESOLVED
+        /*
+        При закрытии ресурса Scanner ловит исключение,
+        которое потенциально может быть сгенерировано.
+
+        Подавляемое исключение сохраняется в поле lastException,
+        к которому доступ организован через метод ioException()
+         */
     }
 }

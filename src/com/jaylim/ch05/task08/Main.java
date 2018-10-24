@@ -5,7 +5,18 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Main {
     public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock();
+        lock.lock();
 
-        // FIXME: 10/23/2018 unresolved
+        try (AutoCloseable stream = new AutoCloseable() {
+            @Override
+            public void close() throws Exception {
+                //some actions to close
+                lock.unlock();
+            }
+        }) {
+            //something do
+        } catch (Exception ex) {
+            //catching
+        }
     }
 }
