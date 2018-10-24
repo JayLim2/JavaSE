@@ -84,19 +84,47 @@ public class Arrays {
      * @param <T>
      */
     public static <T> void minMax(List<T> elements, Comparator<? super T> cmp, List<? super T> result) {
-        Object min = null;
-        Object max = null;
+        T min = null;
+        T max = null;
         if (elements.size() > 0) {
             min = elements.get(0);
             max = elements.get(0);
             for (T element : elements) {
-                /*if(cmp.compare(element, min) < 0) {
+                if (cmp.compare(element, min) < 0) {
                     min = element;
                 }
                 if(cmp.compare(element, max) > 0) {
                     max = element;
-                }*/
+                }
             }
+            result.add(min);
+            result.add(max);
         }
+    }
+
+    /**
+     * Chapter 6
+     * Task 13
+     *
+     * @param elements
+     * @param cmp
+     * @param result
+     * @param <T>
+     */
+    public static <T> void minMax2(List<T> elements, Comparator<? super T> cmp, List<? super T> result) {
+        minMax(elements, cmp, result);
+        swapHelper(result, 1, 0);
+    }
+
+    private static <T> void swapHelper(List<T> elements, int i, int j) {
+        T temp = elements.get(i);
+        elements.set(i, elements.get(j));
+        elements.set(j, temp);
+
+        /*
+        Захват подстановки нужен, т.к. необходимо сохранить один из элементов
+        во временную переменную, чтобы совершить обмен.
+        Проблема в том, что типа ? не существует, а вот обобщенный тип Т - вполне.
+         */
     }
 }
