@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         FileReader fileReader = new FileReader(new File("words.txt"));
         Scanner scanner = new Scanner(fileReader);
-        Map<String, Integer> wordMap = new TreeMap<>();
+        TreeMap<String, Integer> wordMap = new TreeMap<>();
 
         //Task 9.0
         /*while (scanner.hasNext()) {
@@ -28,11 +28,14 @@ public class Main {
         }*/
 
         //putIfAbsent
-        /*while (scanner.hasNext()) {
+        while (scanner.hasNext()) {
             String word = scanner.next();
 
-            // FIXME: 10/25/2018 unresolved
-        }*/
+            Integer val = wordMap.putIfAbsent(word, 1);
+            if (val != null && val > 0) {
+                wordMap.put(word, val + 1);
+            }
+        }
 
         for (Map.Entry<String, Integer> stringIntegerEntry : wordMap.entrySet()) {
             System.out.println(stringIntegerEntry);
