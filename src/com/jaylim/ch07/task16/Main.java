@@ -15,7 +15,7 @@ public class Main {
         for (int i = 0; i < 150; i++) {
             iterator.next();
         }
-        for (int i = 50; i < 120; i++) {
+        for (int i = 0; i < 120; i++) {
             System.out.println(list.get(i));
         }
     }

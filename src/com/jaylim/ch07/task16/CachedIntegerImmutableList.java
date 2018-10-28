@@ -9,6 +9,7 @@ import java.util.function.IntFunction;
 public class CachedIntegerImmutableList extends IntegerImmutableList {
     private Cache<Integer, Integer> cache;
     private Iterator<Integer> iterator;
+    private int calculated = 0;
 
     public CachedIntegerImmutableList(IntFunction<Integer> function) {
         super(function);
@@ -35,18 +36,24 @@ public class CachedIntegerImmutableList extends IntegerImmutableList {
             @Override
             public Integer next() {
                 Integer next = getFunction().apply(current);
-                if (index++ >= 100) {
+                if (index >= 100) {
                     cache.remove(minIndex++);
                 }
-                cache.put(index, next);
+                cache.put(index++, next);
+                calculated++;
+                current = next;
                 return next;
+            }
+
+            public int getCalculated() {
+                return calculated;
             }
         };
     }
 
     @Override
     public Integer get(int index) {
-        if (cache.containsKey(index)) {
+        if (index >= calculated - 100 && index < calculated) {
             System.out.println("get from cache: ");
             return cache.get(index);
         }

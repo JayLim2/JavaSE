@@ -115,7 +115,7 @@ public class IntegerImmutableList implements List<Integer> {
     @Override
     public Integer get(int index) {
         Integer element = 0;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i <= index; i++) {
             element = function.apply(element);
         }
         return element;
