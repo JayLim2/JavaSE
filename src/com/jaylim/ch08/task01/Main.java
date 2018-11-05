@@ -23,8 +23,6 @@ public class Main {
                 System.out.println("filtering: " + s);
             }
             return res;
-        }).limit(5).forEach((s) -> System.out.println(""));
-
-        // FIXME: 10/29/2018 UNRESOLVED
+        }).limit(5).forEach((s) -> System.out.print(""));
     }
 }

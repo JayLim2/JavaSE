@@ -77,14 +77,14 @@ public class Main {
         try {
             File file = new File(filename);
             Scanner scanner = new Scanner(new FileReader(file));
-        /*while (scanner.hasNext()) {
-            try {
-                Double dVal = Double.parseDouble(scanner.next());
-                list.add(dVal);
-            } catch (NumberFormatException ex) {
-                throw new NumberFormatException("Value is not floating point values.");
-            }
-        }*/
+            /*while (scanner.hasNext()) {
+                try {
+                    Double dVal = Double.parseDouble(scanner.next());
+                    list.add(dVal);
+                } catch (NumberFormatException ex) {
+                    throw new NumberFormatException("Value is not floating point values.");
+                }
+            }*/
 
             while (scanner.hasNextDouble()) {
                 Double dVal = scanner.nextDouble();
@@ -96,7 +96,7 @@ public class Main {
 
             list.add(errCode);
         } catch (FileNotFoundException ex) {
-            list.add((double) ex.hashCode());
+            list.add((double) ErrorCodes.FILE_NOT_FOUND);
         }
         return list;
     }
@@ -110,7 +110,7 @@ public class Main {
             }
             return sum;
         } catch (Exception ex) {
-            return ex.hashCode();
+            return ErrorCodes.EXCEPTION;
         }
     }
 }

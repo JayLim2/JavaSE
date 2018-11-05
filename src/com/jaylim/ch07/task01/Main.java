@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+//HashSet
 public class Main {
     public static void main(String[] args) {
         Set<Integer> set = sieve(31);
@@ -21,7 +22,7 @@ public class Main {
 
         Integer s = Collections.min(set);
         while (s * s <= n) {
-            Set<Integer> toRemoveSet = getRemovedSet(set, s, n);
+            Set<Integer> toRemoveSet = getRemovedSet(s, n);
             set.removeAll(toRemoveSet);
             s++;
         }
@@ -29,7 +30,7 @@ public class Main {
         return set;
     }
 
-    private static Set<Integer> getRemovedSet(Set<Integer> set, int s, int n) {
+    private static Set<Integer> getRemovedSet(int s, int n) {
         Set<Integer> result = new HashSet<>();
         int k = 0;
         while (s * (s + k) <= n) {

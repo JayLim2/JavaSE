@@ -21,7 +21,6 @@ public class Main {
             return;
         } else {
             while (true) {
-                int i = 0;
                 boolean isSorted = true;
                 for (int j = 1; j < size && isSorted; j++) {
                     if (cmp.compare(strings.get(j), strings.get(j - 1)) < 0) {
