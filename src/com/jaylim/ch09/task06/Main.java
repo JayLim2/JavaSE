@@ -1,10 +1,5 @@
-package com.jaylim.ch09.task07;
+package com.jaylim.ch09.task06;
 
-import com.jaylim.ch06.task05.Arrays;
-import com.sun.imageio.plugins.bmp.BMPMetadata;
-
-import javax.imageio.ImageIO;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 

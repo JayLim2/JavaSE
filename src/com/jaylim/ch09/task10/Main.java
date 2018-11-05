@@ -16,8 +16,6 @@ public class Main {
         for (Integer integer : list) {
             System.out.println(integer);
         }
-
-        // FIXME: 10/31/2018 unresolved method 2
     }
 
     public static List<Integer> getIntegers(String s) {
@@ -35,12 +33,12 @@ public class Main {
 
     public static List<Integer> getIntegers2(String s) {
         ArrayList<Integer> list = new ArrayList<>();
-        String[] array = s.split("([^0-9]+)");
-
+        String[] array = s.split("[^0-9+-]+|[-+]\\D");
         for (String s1 : array) {
-            System.out.println(s1);
+            if (s1.isEmpty()) continue;
+            //System.out.println("string: \""+s1+"\"");
+            list.add(Integer.parseInt(s1));
         }
-
         return list;
     }
 }

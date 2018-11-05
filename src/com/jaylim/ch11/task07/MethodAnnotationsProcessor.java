@@ -14,7 +14,7 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Set;
 
-@SupportedAnnotationTypes({"com.jaylim.ch11.task07.Param", "com.jaylim.ch11.task07.Return"}) // FIXME: 03.11.2018
+@SupportedAnnotationTypes({"com.jaylim.ch11.task06.Param", "com.jaylim.ch11.task06.Return"}) // FIXME: 03.11.2018
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class MethodAnnotationsProcessor extends AbstractProcessor {
     public MethodAnnotationsProcessor() {

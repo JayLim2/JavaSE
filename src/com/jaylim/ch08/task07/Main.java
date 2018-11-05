@@ -11,13 +11,13 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) throws IOException {
         //Вывести все слова
-        Stream<String> stream = getWordsStream("task07.txt");
+        Stream<String> stream = getWordsStream("task06.txt");
         stream.forEach(System.out::println);
 
         System.out.println();
 
         //Подсчитать частоту. Вывести 10 наиболее частых.
-        Stream<String> stream2 = getWordsStream("task07.txt");
+        Stream<String> stream2 = getWordsStream("task06.txt");
         List<String> words = stream2.collect(Collectors.toList());
         Map<String, Integer> mapWordsToCount = new TreeMap<>();
         words.forEach((word) -> mapWordsToCount.merge(word, 1, Integer::sum));
