@@ -1,7 +1,6 @@
 package com.jaylim.ch09.task06;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 
 public class Main {
 
@@ -13,6 +12,13 @@ public class Main {
         System.out.println(raf.readByte());
         System.out.println(raf.readByte());*/
 
+
+        /*InputStream inputStream = new FileInputStream(new File("test1.bmp"));
+        int b = inputStream.read();
+        while (b != -1) {
+            System.out.println(b);
+            b = inputStream.read();
+        }*/
         bmp("test1.bmp");
     }
 
@@ -62,12 +68,35 @@ public class Main {
             }
             for (byte i = 0; i < size; i++) {
                 ret <<= 8;
-                ret |= (short) bytes[i] & 0xFF;
+                ret |= (int) bytes[i] & 0xFF;
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         return ret;
+    }
+
+    /*
+    Считывает 3 байта RGB и один байт-заполнение
+     */
+    public static int[] readColor(RandomAccessFile raf) {
+        byte size = 3;
+        int[] bytes = new int[size];
+        try {
+            for (byte i = 0; i < size; i++) {
+                bytes[i] = raf.readByte();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return bytes;
+    }
+
+    private static String colorByteArrayToString(int[] color) {
+        return new StringBuilder()
+                .append(color[0]).append(", ")
+                .append(color[1]).append(", ")
+                .append(color[2]).toString();
     }
 
     public static void bmp(String filename) {
@@ -88,6 +117,9 @@ public class Main {
             System.out.println("Compression type " + compressionType);
             int imageSize = readInt(raf);
             System.out.println("Image size " + imageSize);
+            for (int i = 0; i < 64; i++) {
+                System.out.println((int) raf.readByte());
+            }
             int horzRes = readInt(raf);
             System.out.println("Horizontal resolution " + horzRes);
             int vertRes = readInt(raf);
@@ -97,8 +129,9 @@ public class Main {
             int numImpColors = readInt(raf);
             System.out.println("Number of important colors " + numImpColors);
 
+            raf.seek(54);
             //Далее идет матрица пикселей (т.к. изображение 8 битное)
-            for (int row = height; row > 0; row--) {
+            for (int row = height - 1; row >= 0; row--) {
                 for (int col = 0; col < width; col++) {
                     /*
                     т.к. пиксели записаны по принципу (j, i) снизу вверх
@@ -112,7 +145,9 @@ public class Main {
                     ВАЖНО
                     2 раза читаем пиксели, затем читаем заполнение 2 байта!!!
                      */
+                    System.out.printf("(%d, %d): %s %n", col, row, colorByteArrayToString(readColor(raf)));
                 }
+                raf.readByte();
             }
 
             raf.close();
